@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">বাসা কই</string>
+    <string name="login1">আপনার অ্যাকাউন্টে \nলগ ইন করুন</string>
+    <string name="login2">ফোন নম্বর </string>
+    <string name="login3">+88 </string>
+    <string name="login4">ওটিপি পাঠান</string>
+    <string name="login5">এখানে নতুন আপনি ?  \nকোন সমস্যা নেই, আমাদের স্বয়ংক্রিয় ও সুরক্ষিত সিস্টেমে আপনি শুধু ফোন নাম্বার দিয়ে এক ট্যাপে লগইন করতে পারবেন</string>
+    <string name="login6">ফোন নম্বর (01*********)</string>
 </resources>

@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 //start the next page 3 second delay
                 //here you can add next page easily.
+                startActivity(new Intent(MainActivity.this, activity_login_page.class));
+
             }
         },3000);
     }

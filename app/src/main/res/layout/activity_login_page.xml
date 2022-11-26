@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_login_page">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:alpha="0.8"
+        android:src="@drawable/basha_koi" />
+
+    <TextView
+        android:id="@+id/ltext1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_gravity="left|center_horizontal|center_vertical"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="15sp"
+        android:gravity="left"
+        android:text="@string/login1"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/ltext2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ltext1"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="left"
+        android:text="@string/login2"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/ltext3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ltext2"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="5sp"
+        android:enabled="false"
+        android:hint="@string/login3"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/ltext4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ltext2"
+        android:layout_toRightOf="@+id/ltext3"
+        android:hint="@string/login6"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textSize="16sp" />
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ltext4"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="25sp"
+        android:layout_marginRight="25sp"
+        android:text="@string/login4"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@color/teal_200"
+        />
+
+    <TextView
+        android:id="@+id/information_for_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_login"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="145sp"
+        android:layout_marginRight="25sp"
+        android:text="@string/login5"
+        android:textAlignment="center"
+        android:textColor="@color/teal_200"
+        android:textSize="10sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/information_for_start"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:text="Service Provider"
+        android:textSize="20sp" />
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btn_login"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

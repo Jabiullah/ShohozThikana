@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "420411267471",
+    "project_id": "fir-authlog-96641",
+    "storage_bucket": "fir-authlog-96641.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420411267471:android:f0ef6c4495cef63a7c93fa",
+        "android_client_info": {
+          "package_name": "com.example.bashakoi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420411267471-gasn91qgrqpckcugm97bad6802uu1t51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMPzYzi8_SLnI3qVg0sR99vphmNQVl-ic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420411267471-gasn91qgrqpckcugm97bad6802uu1t51.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420411267471:android:5f990a2ea4d0a5fb7c93fa",
+        "android_client_info": {
+          "package_name": "com.example.firebaseauthlog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420411267471-our79ajo2gipft9k87ggol03qc1mo2m0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebaseauthlog",
+            "certificate_hash": "6a247b4826a0be5558a6a4779cbec2c7657f7d23"
+          }
+        },
+        {
+          "client_id": "420411267471-gasn91qgrqpckcugm97bad6802uu1t51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMPzYzi8_SLnI3qVg0sR99vphmNQVl-ic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420411267471-gasn91qgrqpckcugm97bad6802uu1t51.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
