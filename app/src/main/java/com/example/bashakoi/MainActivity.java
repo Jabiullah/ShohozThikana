@@ -17,7 +17,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     //changed commit
-
+    //local git changed
     private ProgressBar progressBar;
     private TextView headerInfo;
     int progress_round = 0;
