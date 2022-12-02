@@ -39,6 +39,7 @@ public class loginPage extends AppCompatActivity {
 
     String number="";
     Boolean btn_otp_click = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,7 @@ public class loginPage extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
+
 
         btn_otp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,55 +135,94 @@ public class loginPage extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     //successful part
-                    Toast.makeText(loginPage.this, "Great job ! bashaKoi", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(loginPage.this, "", Toast.LENGTH_SHORT).show();
                     //Database check now.
-                    //userAuth();
-                    //startActivity(new Intent(loginPage.this, otpPage.class));
+                    authenticationUser();
+
                 }
             }
         });
     }
 
-//    private void userAuth() {
-//        final String phone_number = number;
-//        //Toast.makeText(loginPage.this, "Take 1 = "+phone_number, Toast.LENGTH_SHORT).show();
-//        class UserLogin extends AsyncTask<Void, Void, String> {
-//            @Override
-//            protected void onPreExecute() {
-//                super.onPreExecute();
-//            }
-//            @Override
-//            protected void onPostExecute(String s) {
-//                super.onPostExecute(s);
-//                try {
-//                    //Toast.makeText(loginPage.this, "Take 2 = ", Toast.LENGTH_SHORT).show();
-//                    JSONObject obj = new JSONObject(s);
-//                    Toast.makeText(loginPage.this, "Take 3 = ", Toast.LENGTH_SHORT).show();
-//                    if (!obj.getBoolean("error")) {
-//                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-//                        JSONObject userJson = obj.getJSONObject("user_id");
-//                        User user = new User(
-//                                userJson.getInt("user_id")
-//                        );
-//                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
-//                        finish();
-//                        startActivity(new Intent(getApplicationContext(), otpPage.class));
-//                    } else {
-//                        Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//            @Override
-//            protected String doInBackground(Void... voids) {
-//                RequestHandler requestHandler = new RequestHandler();
-//                HashMap<String, String> params = new HashMap<>();
-//                params.put("phone", phone_number);
-//                return requestHandler.sendPostRequest(URLs.URL_AUTH, params);
-//            }
-//        }
-//        UserLogin ul = new UserLogin();
-//        ul.execute();
-//    }
-}
+
+    private void authenticationUser() {
+        final String phone = number;
+
+        class UserLogin extends AsyncTask<Void, Void, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                try {
+                    //converting response to json object
+                    JSONObject obj = new JSONObject(s);
+
+                    //if no error in response
+                    if (!obj.getBoolean("error")) {
+
+                        final String user_message = obj.getString("message");
+
+                        //getting the user from the response
+                        JSONObject userJson = obj.getJSONObject("user");
+
+                        //creating a new user object
+                        User user = new User(
+                                userJson.getInt("user_id"),
+                                userJson.getString("user_phone"),
+                                userJson.getString("user_email")
+                        );
+
+                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
+
+                        //starting the profile activity
+                        finish();
+
+                        if(user_message.contains("old")){
+
+                            Intent intent_home = new Intent(getApplicationContext(), recoveryPage.class);
+
+                            Toast.makeText(getApplicationContext(), "স্বাগতম পুনরায় লগইন করার জন্য", Toast.LENGTH_SHORT).show();
+
+                            startActivity(intent_home);
+
+                        }else {
+
+                            Intent intent_recovery = new Intent(getApplicationContext(), recoveryPage.class);
+                            intent_recovery.putExtra("phone", phone);
+
+                            Toast.makeText(getApplicationContext(), "স্বাগতম আপনাকে আমাদের প্লাটফর্মে", Toast.LENGTH_SHORT).show();
+
+
+                            startActivity(intent_recovery);
+
+                        }
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Invalid phone number", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                //creating request handler object
+                RequestHandler requestHandler = new RequestHandler();
+
+                //creating request parameters
+                HashMap<String, String> params = new HashMap<>();
+                params.put("user_phone", phone);
+
+                return requestHandler.sendPostRequest(URLs.URL_AUTH, params);
+            }
+        }
+
+        UserLogin ul = new UserLogin();
+        ul.execute();
+        }
+    }
