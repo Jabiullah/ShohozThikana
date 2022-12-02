@@ -56,6 +56,12 @@ public class loginPage extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+            finish();
+            startActivity(new Intent(this, homePage.class));
+            return;
+        }
+
 
         btn_otp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +179,8 @@ public class loginPage extends AppCompatActivity {
                         User user = new User(
                                 userJson.getInt("user_id"),
                                 userJson.getString("user_phone"),
-                                userJson.getString("user_email")
+                                userJson.getString("user_email"),
+                                userJson.getString("user_name")
                         );
 
                         SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
@@ -183,7 +190,7 @@ public class loginPage extends AppCompatActivity {
 
                         if(user_message.contains("old")){
 
-                            Intent intent_home = new Intent(getApplicationContext(), recoveryPage.class);
+                            Intent intent_home = new Intent(getApplicationContext(), homePage.class);
 
                             Toast.makeText(getApplicationContext(), "স্বাগতম পুনরায় লগইন করার জন্য", Toast.LENGTH_SHORT).show();
 

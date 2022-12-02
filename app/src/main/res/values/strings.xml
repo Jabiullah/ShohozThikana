@@ -11,4 +11,13 @@
     <string name="recover_input_hint">অনুগ্রহ করে রিকোভারি ইমেইল সংযুক্ত করুন</string>
     <string name="recover_info">আপনার ফোন নাম্বার দিয়ে সর্বদা আপনি আমাদের সাথে যুক্ত থাকবেন। আপনার একাউন্টের নিরাপত্তাকে আরো একধাপ বৃদ্ধির জন্য এই ইমেইলটি প্রয়োজন।  পরবর্তীতে আপনি চাইলে ইমেইল আপডেট করতে পারবেন।</string>
     <string name="recover_btn">সম্পন্ন করুন</string>
+    <string name="header_name">বাসা</string>
+    <string name="header_name_next"> কই</string>
+    <string name="version">বাসা কই Version 1.0.1</string>
+    <string name="profile1">লগ আউট</string>
+    <string name="profile2">রিকোভারি ইমেইল</string>
+    <string name="profile3">আপনার ব্যক্তিগত তথ্য</string>
+    <string name="profile4">লগ আউট</string>
+    <string name="profile5">আপডেট করুন</string>
+    <string name="profile6">পরিবর্তন সম্পন্ন হয়েছে</string>
 </resources>

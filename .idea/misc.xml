@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Software Lab Temporary/app/src/main/res/drawable-v24/locationbar.xml" value="0.1" />
+        <entry key="..\:/Software Lab Temporary/app/src/main/res/drawable-v24/shapebar.xml" value="0.1675" />
         <entry key="..\:/Software Lab Temporary/app/src/main/res/drawable/circular_progress_bar.xml" value="0.18" />
         <entry key="..\:/Software Lab Temporary/app/src/main/res/drawable/circular_shape.xml" value="0.1" />
         <entry key="..\:/Software Lab Temporary/app/src/main/res/drawable/fade_in.xml" value="0.1" />
@@ -10,6 +12,7 @@
         <entry key="..\:/Software Lab Temporary/app/src/main/res/layout/activity_login_page.xml" value="0.19230769230769232" />
         <entry key="..\:/Software Lab Temporary/app/src/main/res/layout/activity_main.xml" value="0.10344827586206896" />
         <entry key="..\:/Software Lab Temporary/app/src/main/res/layout/activity_otp_page.xml" value="0.19010416666666666" />
+        <entry key="..\:/Software Lab Temporary/app/src/main/res/layout/activity_profile_page.xml" value="0.1" />
         <entry key="..\:/Software Lab Temporary/app/src/main/res/layout/activity_recovery_page.xml" value="0.18" />
       </map>
     </option>
