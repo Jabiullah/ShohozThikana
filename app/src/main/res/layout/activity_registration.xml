@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registration">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:alpha="0.8"
+        android:src="@drawable/basha_koi" />
+
+    <TextView
+        android:id="@+id/recoveryHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_gravity="left|center_horizontal|center_vertical"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="15sp"
+        android:gravity="left"
+        android:text="@string/recover_heading"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/recoveryInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recoveryHeading"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/recover_input_text"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/recoveryEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recoveryInput"
+        android:hint="@string/recover_input_hint"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:textSize="16sp" />
+    <Button
+        android:id="@+id/btn_inputEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_below="@+id/recoveryEmail"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/recover_btn"
+        />
+    <TextView
+        android:id="@+id/recoveryInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_inputEmail"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="95sp"
+        android:layout_marginRight="25sp"
+        android:text="@string/recover_info"
+        android:textAlignment="center"
+        android:textColor="@color/teal_200"
+        android:textSize="10sp" />
+
+</RelativeLayout>

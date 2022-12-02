@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -21,6 +22,10 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class activity_login_page extends AppCompatActivity {
@@ -30,7 +35,10 @@ public class activity_login_page extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     String verificationID;
+
     Boolean btn_otp_click = false;
+    String number="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +61,12 @@ public class activity_login_page extends AppCompatActivity {
                     Toast.makeText(activity_login_page.this, "Enter a valid Number", Toast.LENGTH_SHORT).show();
                 }
                 if(btn_otp_click==false){
-                    String number = phone.getText().toString();
+                    number = phone.getText().toString();
                     sendverificationcode(number);
 
                     // how to put center android:layout_centerHorizontal="true"
                     header.setVisibility(View.GONE);
-                    caption.setText(" অনুগ্রহ করে ভেরিফিকেশন সম্পূর্ণ করুণ \n\n\n\n");
+                    caption.setText("\n\n অনুগ্রহ করে ভেরিফিকেশন সম্পূর্ণ করুণ \n\n");
                     caption.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                     information.setText("");
                     information.setText("\n আর মাত্র একটি ধাপ বাকি \n" +
@@ -125,11 +133,96 @@ public class activity_login_page extends AppCompatActivity {
                     //successful part
                     Toast.makeText(activity_login_page.this, "Great job ! bashaKoi", Toast.LENGTH_SHORT).show();
                     //Database check now.
-                    startActivity(new Intent(activity_login_page.this, otpPage.class));
+//                    startActivity(new Intent(activity_login_page.this, otpPage.class));
+               authenticationUser();
                 }
             }
         });
     }
 
+    private void authenticationUser() {
+        final String phone = number;
 
+        class UserLogin extends AsyncTask<Void, Void, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                try {
+                    //converting response to json object
+                    JSONObject obj = new JSONObject(s);
+
+                    //if no error in response
+                    if (!obj.getBoolean("error")) {
+
+                        final String user_message = obj.getString("message");
+
+                        //getting the user from the response
+                        JSONObject userJson = obj.getJSONObject("user");
+
+                        //creating a new user object
+                        User user = new User(
+                                userJson.getInt("servicer_id"),
+                                userJson.getString("servicer_phone"),
+                                userJson.getString("servicer_email"),
+                                userJson.getString("company_name"),
+                                userJson.getString("company_id")
+
+                                );
+
+                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
+
+                        //starting the profile activity
+                        finish();
+
+                        if(user_message.contains("old")){
+
+                            Intent intent_home = new Intent(getApplicationContext(), Registration.class);
+
+                            Toast.makeText(getApplicationContext(), "স্বাগতম পুনরায় লগইন করার জন্য", Toast.LENGTH_SHORT).show();
+
+                            startActivity(intent_home);
+
+                        }else {
+
+                            Intent intent_recovery = new Intent(getApplicationContext(), Registration.class);
+                            intent_recovery.putExtra("phone", phone);
+
+                            Toast.makeText(getApplicationContext(), "স্বাগতম আপনাকে আমাদের প্লাটফর্মে", Toast.LENGTH_SHORT).show();
+
+
+                            startActivity(intent_recovery);
+
+                        }
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Invalid phone number", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                //creating request handler object
+                RequestHandler requestHandler = new RequestHandler();
+
+                //creating request parameters
+                HashMap<String, String> params = new HashMap<>();
+                params.put("servicer_phone", phone);
+
+                return requestHandler.sendPostRequest(URLs.URL_AUTH, params);
+            }
+        }
+
+        UserLogin ul = new UserLogin();
+        ul.execute();
+    }
 }
+
+
