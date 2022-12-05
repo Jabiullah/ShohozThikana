@@ -131,10 +131,9 @@ public class activity_login_page extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     //successful part
-                    Toast.makeText(activity_login_page.this, "Great job ! bashaKoi", Toast.LENGTH_SHORT).show();
                     //Database check now.
 //                    startActivity(new Intent(activity_login_page.this, otpPage.class));
-               authenticationUser();
+                    authenticationUser();
                 }
             }
         });
@@ -162,7 +161,9 @@ public class activity_login_page extends AppCompatActivity {
                         final String user_message = obj.getString("message");
 
                         //getting the user from the response
-                        JSONObject userJson = obj.getJSONObject("user");
+                        JSONObject userJson = obj.getJSONObject("servicer");
+
+                        Toast.makeText(activity_login_page.this, "Great job ! bashaKoi", Toast.LENGTH_SHORT).show();
 
                         //creating a new user object
                         User user = new User(
@@ -181,7 +182,7 @@ public class activity_login_page extends AppCompatActivity {
 
                         if(user_message.contains("old")){
 
-                            Intent intent_home = new Intent(getApplicationContext(), Registration.class);
+                            Intent intent_home = new Intent(getApplicationContext(), home_page.class);
 
                             Toast.makeText(getApplicationContext(), "স্বাগতম পুনরায় লগইন করার জন্য", Toast.LENGTH_SHORT).show();
 

@@ -9,6 +9,9 @@
     <string name="recover_heading">স্বাগতম আপনাকে</string>
     <string name="recover_input_text">আপনার এই ফোন নাম্বারে একটি নতুন একাউন্ট সংযুক্ত হয়েছে</string>
     <string name="recover_input_hint">অনুগ্রহ করে রিকোভারি ইমেইল সংযুক্ত করুন</string>
+    <string name="company_name">কোম্পানির নাম</string>
+    <string name="company_id" > কোম্পানির আইডি নং.</string>
+    <string name="email">ইমেইল</string>
     <string name="recover_info">আপনার ফোন নাম্বার দিয়ে সর্বদা আপনি আমাদের সাথে যুক্ত থাকবেন। আপনার একাউন্টের নিরাপত্তাকে আরো একধাপ বৃদ্ধির জন্য এই ইমেইলটি প্রয়োজন।  পরবর্তীতে আপনি চাইলে ইমেইল আপডেট করতে পারবেন।</string>
     <string name="recover_btn">সম্পন্ন করুন</string>
 </resources>
