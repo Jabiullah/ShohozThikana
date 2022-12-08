@@ -2,10 +2,11 @@ package com.example.bashakoi;
 
 public class User {
     private int servicer_id;
-    private String servicer_phone, servicer_email, company_name, company_id;
+    private String servicer_name, servicer_phone, servicer_email, company_name, company_id;
 
-    public User(int servicer_id, String servicer_phone, String servicer_email, String company_name, String company_id) {
+    public User(int servicer_id, String servicer_name, String servicer_phone, String servicer_email, String company_name, String company_id) {
         this.servicer_id = servicer_id;
+        this.servicer_name = servicer_name;
         this.servicer_phone = servicer_phone;
         this.servicer_email = servicer_email;
         this.company_name = company_name;
@@ -19,6 +20,8 @@ public class User {
     public String getPhone() {
         return servicer_phone;
     }
+
+    public String getServicer_name() {return servicer_name;}
 
     public String getEmail() {return servicer_email;}
 

@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/recoveryHeading"
         android:layout_marginLeft="25sp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
         android:text="@string/recover_input_text"
@@ -42,16 +42,44 @@
 
 
     <EditText
-        android:id="@+id/company_name"
+        android:id="@+id/service_prov_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/recoveryInput"
         android:layout_marginLeft="25sp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:hint="@string/service_provider_name"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/servicer_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/service_prov_name"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/company_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/servicer_email"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
         android:hint="@string/company_name"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:maxLines="1"
         android:textSize="16sp" />
 
@@ -61,36 +89,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/company_name"
         android:layout_marginLeft="25sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
         android:hint="@string/company_id"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:maxLines="1"
         android:textSize="16sp" />
 
-    <EditText
-        android:id="@+id/servicer_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/company_id"
-        android:layout_marginLeft="25sp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="25dp"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:maxLines="1"
-        android:textSize="16sp" />
 
     <Button
         android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:layout_below="@+id/servicer_email"
+        android:layout_below="@+id/company_id"
         android:layout_marginLeft="25sp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
         android:text="@string/recover_btn"
@@ -102,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_submit"
         android:layout_marginLeft="25sp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="3dp"
         android:layout_marginRight="25sp"
         android:text="@string/recover_info"
         android:textAlignment="center"

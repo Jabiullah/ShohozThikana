@@ -169,6 +169,7 @@ public class activity_login_page extends AppCompatActivity {
                         User user = new User(
                                 userJson.getInt("servicer_id"),
                                 userJson.getString("servicer_phone"),
+                                userJson.getString("servicer_name"),
                                 userJson.getString("servicer_email"),
                                 userJson.getString("company_name"),
                                 userJson.getString("company_id")

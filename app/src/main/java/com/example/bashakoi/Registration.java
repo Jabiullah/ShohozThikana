@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 public class Registration extends AppCompatActivity {
-    EditText companyName, companyId, servicerEmail;
+    EditText companyName, companyId, servicerEmail, servicerName;
     Button submit;
     String servicer_phone ="";
     @Override
@@ -24,6 +24,8 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+
+        servicerName = findViewById(R.id.service_prov_name);
         servicerEmail = findViewById(R.id.servicer_email); // textView
         companyName = findViewById(R.id.company_name);
         companyId = findViewById(R.id.company_id);
@@ -41,6 +43,7 @@ public class Registration extends AppCompatActivity {
     }
 
     private void registration() {
+        final String servicer_name = servicerName.getText().toString();
         final String servicer_email = servicerEmail.getText().toString();
         final String company_name = companyName.getText().toString();
         final String company_id = companyId.getText().toString();
@@ -95,6 +98,7 @@ public class Registration extends AppCompatActivity {
                 //creating request parameters
                 HashMap<String, String> params = new HashMap<>();
                 params.put("servicer_phone", servicer_phone);
+                params.put("servicer_name", servicer_name);
                 params.put("servicer_email", servicer_email);
                 params.put("company_name", company_name);
                 params.put("company_id", company_id);

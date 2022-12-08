@@ -8,6 +8,7 @@ public class SharedPrefManager {
     //the constants
     private static final String SHARED_PREF_NAME = "check";
     private static final String KEY_PHONE = "keyphone";
+    private static final String KEY_NAME = "keyname";
     private static final String KEY_EMAIL = "keyemail";
     private static final String KEY_ID = "keyid";
     private static final String COM_NAME = "companyname";
@@ -36,6 +37,7 @@ public class SharedPrefManager {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(KEY_ID, user.getId());
         editor.putString(KEY_PHONE, user.getPhone());
+        editor.putString(KEY_NAME, user.getServicer_name());
         editor.putString(KEY_EMAIL, user.getEmail());
         editor.putString(COM_NAME, user.getCompany());
         editor.putString(COM_ID, user.getCompanyId());
@@ -56,6 +58,7 @@ public class SharedPrefManager {
         return new User(
                 sharedPreferences.getInt(KEY_ID, -1),
                 sharedPreferences.getString(KEY_PHONE, null),
+                sharedPreferences.getString(KEY_NAME, null),
                 sharedPreferences.getString(KEY_EMAIL, null),
                 sharedPreferences.getString(COM_NAME, null),
                 sharedPreferences.getString(COM_ID, null)
