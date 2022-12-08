@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 public class profilePage extends AppCompatActivity {
     EditText EdPhone, EdEmail ,EdName;
-    TextView TxLogout;
+    TextView TxLogout,locationView;
+    String house;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,7 @@ public class profilePage extends AppCompatActivity {
         EdPhone  = findViewById(R.id.phone);
         EdEmail  = findViewById(R.id.email);
         TxLogout = findViewById(R.id.logout);
+        locationView = findViewById(R.id.location_basic);
 
         //getting the current user
         User user = SharedPrefManager.getInstance(this).getUser();
@@ -33,6 +35,7 @@ public class profilePage extends AppCompatActivity {
         EdPhone.setText(user.getPhone());
         EdEmail.setText(user.getEmail());
          EdName.setText(user.getUser_name());
+         locationView.setText("House No. - প্রত্যয়ের হৃদয় \nLocation - হৃদয়ের ধমনী\nStreet - প্রত্যয়ের মন");
 
         TxLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +44,7 @@ public class profilePage extends AppCompatActivity {
                 SharedPrefManager.getInstance(getApplicationContext()).logout();
             }
         });
+
 
     }
 }

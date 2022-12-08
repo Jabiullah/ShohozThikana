@@ -20,4 +20,10 @@
     <string name="profile4">লগ আউট</string>
     <string name="profile5">আপডেট করুন</string>
     <string name="profile6">পরিবর্তন সম্পন্ন হয়েছে</string>
+    <string name="home1">আপনার ঠিকানা ডিজিটাল\nকরুন</string>
+    <string name="informationPage1"> বাড়ি / সম্পত্তি / কর্মস্থলের নাম </string>
+    <string name="informationPage2"> ফ্ল্যাট নং / বিল্ডিং নং </string>
+    <string name="informationPage3"> কলোনি / রোড নং / এলাকা</string>
+    <string name="informationPageHead">আপনার বাসার তথ্য দিন</string>
+    <string name="informationPageCategory">আপনার বাসার তথ্য দিন</string>
 </resources>

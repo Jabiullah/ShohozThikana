@@ -5,4 +5,5 @@ public class URLs {
 
     public static final String URL_AUTH =  ROOT_URL + "Authentication.php?" ;
     public static final String URL_R_EMAIL =  ROOT_URL + "RecoveryEmail.php?" ;
+    public static final String URL_LOCATION_INFO_INSERT =  ROOT_URL + "InsertLocationTextInfo.php?" ;
 }

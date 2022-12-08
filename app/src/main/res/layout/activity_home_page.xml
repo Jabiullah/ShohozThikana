@@ -5,13 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".homePage">
+    <RelativeLayout
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shapebar">
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5sp">
+            <TextView
+                android:id="@+id/header_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="@string/header_name"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/header_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="4dp"
+                android:text="@string/header_name_next"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="10dp"
         app:srcCompat="@drawable/profile"
         app:fabSize="mini"
         />
@@ -22,4 +57,32 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="Home"/>
+
+    <FrameLayout
+        android:id="@+id/idFrame"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+        <ImageButton
+            android:id="@+id/info_add"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            android:src="@drawable/add_icon"
+            android:background="@color/teal_200"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home1"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="55dp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+    </FrameLayout>
+
 </RelativeLayout>
