@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shapebar">
 
+
         <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="40dp"
@@ -40,6 +41,16 @@
         </RelativeLayout>
     </RelativeLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/back_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        app:srcCompat="@drawable/back"
+        app:fabSize="mini"
+        />
 
     <TextView
         android:id="@+id/info_head"
@@ -70,6 +81,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15sp"
         android:text="Adiba Saira"
+        android:paddingTop="5sp"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:paddingBottom="5sp"
+        android:background="@drawable/edittextborder"
         android:textSize="16sp" />
 
     <TextView
@@ -97,55 +113,79 @@
         android:visibility="gone"
         android:textColor="@color/green"
         android:textStyle="bold" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/r_email"
+        android:layout_below="@+id/name"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
+        android:layout_marginTop="65sp"
+        android:text="@string/profile2"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
+        android:layout_below="@+id/r_email"
         android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
         android:layout_marginTop="15sp"
+        android:paddingTop="5sp"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:paddingBottom="5sp"
         android:enabled="false"
         android:hint="@string/profile2"
         android:inputType="text"
         android:maxLines="1"
         android:minHeight="48dp"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:background="@drawable/edittextborder"
+        />
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/p_phone"
+        android:layout_below="@+id/email"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
+        android:layout_marginTop="15sp"
+        android:text="@string/profile7"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
     <EditText
         android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/email"
+        android:layout_below="@+id/p_phone"
         android:layout_marginLeft="15sp"
         android:layout_marginTop="15sp"
+        android:layout_marginRight="15sp"
+        android:paddingTop="5sp"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:paddingBottom="5sp"
         android:enabled="false"
-        android:hint="@string/profile2"
+        android:hint="@string/profile7"
         android:inputType="text"
         android:maxLines="1"
         android:minHeight="48dp"
+        android:background="@drawable/edittextborder"
         android:textSize="14sp" />
-    <RelativeLayout
-        android:id="@+id/location_info"
-        android:layout_width="350sp"
-        android:layout_height="100sp"
-        android:layout_margin="20sp"
-        android:layout_below="@+id/phone"
-        android:background="@drawable/shapebar">
-        <TextView
-            android:id="@+id/location_basic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
-    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/location_info"
-
-        android:layout_marginTop="15sp"
+        android:layout_below="@+id/phone"
+        android:layout_marginTop="105sp"
         android:layout_marginLeft="20sp"
         android:text="@string/profile4"
         android:textColor="@color/red"
@@ -155,8 +195,8 @@
         android:id="@+id/version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/location_info"
-        android:layout_marginTop="140sp"
+        android:layout_below="@+id/logout"
+        android:layout_marginTop="40sp"
         android:layout_centerHorizontal="true"
         android:text="@string/version"
         android:textColor="@color/black"

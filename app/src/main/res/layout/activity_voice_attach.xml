@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".voiceAttach">
+    <RelativeLayout
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shapebar">
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5sp">
+            <TextView
+                android:id="@+id/header_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="@string/header_name"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/header_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="4dp"
+                android:text="@string/header_name_next"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/info_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        app:srcCompat="@drawable/back"
+        app:fabSize="mini"
+        />
+    <ImageView
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:id="@+id/i_progress_image"
+        android:background="@drawable/basha_koi"
+        android:layout_below="@+id/head"
+        android:layout_marginTop="10sp"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/intro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/i_progress_image"
+        android:layout_marginLeft="60sp"
+        android:layout_marginRight="65sp"
+        android:layout_marginTop="10sp"
+        android:text="@string/geoInfoNext"
+        android:textAlignment="center"
+        android:textColor="@color/teal_200"
+        android:textSize="16sp" />
+
+    <ProgressBar
+        android:id="@+id/IProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intro"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="45sp"
+        android:max="100"
+        android:progress="50"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        />
+
+    <TextView
+        android:id="@+id/heading_of_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/informationPageAudioHead"
+        android:layout_below="@+id/IProgressBar"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="15sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/audio_ins"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/heading_of_audio"
+        android:layout_marginLeft="15sp"
+        android:layout_marginTop="15sp"
+        android:layout_marginRight="15sp"
+        android:hint="@string/informationPageAudioHint"
+        android:inputType="text"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/record_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/audio_ins"
+        android:text="Start Recording"
+        android:layout_centerHorizontal="true"
+        />
+
+   <Button
+       android:id="@+id/generate"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       />
+
+</RelativeLayout>

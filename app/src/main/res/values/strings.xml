@@ -15,15 +15,20 @@
     <string name="header_name_next"> কই</string>
     <string name="version">বাসা কই Version 1.0.1</string>
     <string name="profile1">লগ আউট</string>
-    <string name="profile2">রিকোভারি ইমেইল</string>
+    <string name="profile2">আপনার রিকোভারি ইমেইল</string>
     <string name="profile3">আপনার ব্যক্তিগত তথ্য</string>
     <string name="profile4">লগ আউট</string>
     <string name="profile5">আপডেট করুন</string>
     <string name="profile6">পরিবর্তন সম্পন্ন হয়েছে</string>
+    <string name="profile7">আপনার ফোন নম্বর</string>
     <string name="home1">আপনার ঠিকানা ডিজিটাল\nকরুন</string>
     <string name="informationPage1"> বাড়ি / সম্পত্তি / কর্মস্থলের নাম </string>
     <string name="informationPage2"> ফ্ল্যাট নং / বিল্ডিং নং </string>
     <string name="informationPage3"> কলোনি / রোড নং / এলাকা</string>
     <string name="informationPageHead">আপনার বাসার তথ্য দিন</string>
     <string name="informationPageCategory">আপনার বাসার তথ্য দিন</string>
+    <string name="informationPageAudioHead">অডিও ইনপুট করুন</string>
+    <string name="informationPageAudioHint">একটি গুরুত্বপূর্ণ জায়গা যেখানে দিক পরিবর্তন করতে হবে</string>
+    <string name="geoInfo">আপনার জিও লোকেশন কোড তৈরির প্রথম ধাপ সম্পন্ন হচ্ছে।</string>
+    <string name="geoInfoNext">আপনার জিও লোকেশন কোড তৈরির দ্বিতীয় ধাপ সম্পন্ন হচ্ছে।</string>
 </resources>
