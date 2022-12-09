@@ -71,4 +71,11 @@ public class SharedPrefManager {
         editor.putString(KEY_EMAIL, s);
         editor.apply();
     }
+    public void changeInProfile(String s,String r){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_EMAIL, s);
+        editor.putString(KEY_NAME, r);
+        editor.apply();
+    }
 }
