@@ -18,7 +18,7 @@ public class SharedPrefManager {
 
     private static SharedPrefManager mInstance;
     private static Context mCtx;
-
+    public SharedPrefManager(){};
     private SharedPrefManager(Context context) {
         mCtx = context;
     }
@@ -73,5 +73,16 @@ public class SharedPrefManager {
         editor.clear();
         editor.apply();
         mCtx.startActivity(new Intent(mCtx, MainActivity.class));
+    }
+
+    public void update(String servicer_name,String servicer_email, String servicer_phn, String company_name, String company_id){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_NAME, servicer_name);
+        editor.putString(KEY_EMAIL, servicer_email);
+        editor.putString(KEY_PHONE, servicer_phn);
+        editor.putString(COM_NAME, company_name);
+        editor.putString(COM_ID, company_id);
+        editor.apply();
     }
 }

@@ -72,6 +72,9 @@ public class Registration extends AppCompatActivity {
                             //starting the profile activity
                             finish();
 
+                            SharedPrefManager sobj = new SharedPrefManager();
+                            sobj.update(servicer_phone,servicer_email, servicer_name,company_name,company_id);
+
                             Intent intent_home = new Intent(getApplicationContext(), home_page.class);
 
                             Toast.makeText(getApplicationContext(), "স্বাগতম আপনাকে আমাদের প্লাটফর্মে", Toast.LENGTH_SHORT).show();

@@ -32,9 +32,9 @@ public class ProfilePage extends AppCompatActivity {
         User user = SharedPrefManager.getInstance(this).getUser();
 
         //setting the values to the textviews
-        EdPhone.setText(user.getPhone());
-        EdEmail.setText(user.getEmail());
         EdName.setText(user.getServicer_name());
+        EdEmail.setText(user.getEmail());
+        EdPhone.setText(user.getPhone());
         EdCompanyName.setText(user.getCompany());
         EdCompanyId.setText(user.getCompanyId());
 
