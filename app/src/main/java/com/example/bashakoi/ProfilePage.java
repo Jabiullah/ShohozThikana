@@ -45,5 +45,7 @@ public class ProfilePage extends AppCompatActivity {
                 SharedPrefManager.getInstance(getApplicationContext()).logout();
             }
         });
+
+
     }
 }
