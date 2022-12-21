@@ -144,12 +144,10 @@ public class loginPage extends AppCompatActivity {
                     //Toast.makeText(loginPage.this, "", Toast.LENGTH_SHORT).show();
                     //Database check now.
                     authenticationUser();
-
                 }
             }
         });
     }
-
 
     private void authenticationUser() {
         final String phone = number;

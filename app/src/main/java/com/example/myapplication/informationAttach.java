@@ -78,11 +78,10 @@ public class informationAttach extends AppCompatActivity {
     }
 
     private void dataStore() {
-        final String location_name   = name.getText().toString().trim();
-        final String location_house  = house.getText().toString().trim();
+        final String location_name = name.getText().toString().trim();
+        final String location_house = house.getText().toString().trim();
         final String location_street = street.getText().toString().trim();
-        //User user                    = SharedPrefManager.getInstance(this).getUser();
-        final String category        = ((RadioButton) findViewById(radioGroupLocation.getCheckedRadioButtonId())).getText().toString();
+        final String category = ((RadioButton) findViewById(radioGroupLocation.getCheckedRadioButtonId())).getText().toString();
 
 
         if (TextUtils.isEmpty(location_name)) {
@@ -103,97 +102,16 @@ public class informationAttach extends AppCompatActivity {
             street.requestFocus();
             return;
         }
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Progressbar changing
-                if (progress < 50) {
-                    progressBar.setProgress(progress);
-                    progress++;
-                    if(progress==16){
-                        name.setEnabled(false);
-                        name.setTextColor(Color.GREEN);
-                    }
-                    if(progress==33){
-                        house.setEnabled(false);
-                        house.setTextColor(Color.GREEN);
-                    }
-                    if(progress==45){
-                        street.setEnabled(false);
-                        street.setTextColor(Color.GREEN);
-                    }
-                    handler.postDelayed(this, 15);
-                }
-            }
-        }, 15);
         // data bundle and send it to voice page
         Bundle bundle = new Bundle();
-        bundle.putString("location_name",location_name);
-        bundle.putString("location_house",location_house);
-        bundle.putString("location_street",location_street);
-        bundle.putString("category",category);
+        bundle.putString("location_name", location_name);
+        bundle.putString("location_house", location_house);
+        bundle.putString("location_street", location_street);
+        bundle.putString("category", category);
 
         Intent intent_voice = new Intent(informationAttach.this, voiceAttach.class);
         intent_voice.putExtras(bundle);
         startActivity(intent_voice);
-
-//        class dataStore extends AsyncTask<Void, Void, String> {
-//            @Override
-//            protected void onPreExecute() {
-//                super.onPreExecute();
-//            }
-//
-//            @Override
-//            protected void onPostExecute(String s) {
-//                super.onPostExecute(s);
-//                try {
-//                    //converting response to json object
-//                    JSONObject obj = new JSONObject(s);
-//
-//                    //if no error in response
-//                    if (!obj.getBoolean("error")) {
-//
-//                        final String user_message = obj.getString("message");
-//
-//                        //creating a new location object
-//                        if(user_message.contains("Successful")){
-//                            Toast.makeText(getApplicationContext(), "information successful", Toast.LENGTH_SHORT).show();
-//
-//                            Intent intent_profile = new Intent(getApplicationContext(), profilePage.class);
-//
-//                            startActivity(intent_profile);
-//                        }
-//                        //error check
-//
-//
-//                    } else {
-//                        Toast.makeText(getApplicationContext(), "Invalid information", Toast.LENGTH_SHORT).show();
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            protected String doInBackground(Void... voids) {
-//                //creating request handler object
-//                RequestHandler requestHandler = new RequestHandler();
-//
-//                //creating request parameters
-//                HashMap<String, String> params = new HashMap<>();
-//                params.put("location_name", location_name);
-//                params.put("location_house",location_house);
-//                params.put("location_street", location_street);
-//                params.put("location_category", category);
-//                params.put("user_serial", String.valueOf(user.getId()));
-//
-//                return requestHandler.sendPostRequest(URLs.URL_LOCATION_INFO_INSERT, params);
-//            }
-//        }
-//
-//        dataStore ds = new dataStore();
-//        ds.execute();
 
     }
 

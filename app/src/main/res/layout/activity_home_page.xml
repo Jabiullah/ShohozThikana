@@ -12,7 +12,7 @@
         android:background="@drawable/shapebar">
 
         <RelativeLayout
-            android:layout_width="100dp"
+            android:layout_width="140dp"
             android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:layout_marginTop="5sp">
@@ -51,23 +51,29 @@
         app:fabSize="mini"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Home"/>
+        android:layout_below="@id/head"
+        android:id="@+id/mapView"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        tools:context=".homePage"/>
 
     <FrameLayout
         android:id="@+id/idFrame"
-        android:layout_width="220dp"
+        android:layout_width="260dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="1dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
         <ImageButton
             android:id="@+id/info_add"
-            android:layout_width="220dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:scaleType="fitStart"
@@ -78,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/home1"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="55dp"
             android:textColor="@color/white"
             android:textAlignment="center"
