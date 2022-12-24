@@ -11,42 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="horizontal"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="40dp"
-                android:weightSum="3"
-                android:background="@drawable/background"
-                android:elevation="4dp">
-                
-                <Spinner
-                    android:id="@+id/idFromSpinner"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="3dp"
-                    android:padding="3dp"
-                    android:layout_gravity="center"/>
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/exchange"
-                    android:layout_gravity="center"/>
 
-                <Spinner
-                    android:id="@+id/idToSpinner"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="3dp"
-                    android:padding="3dp"
-                    android:layout_gravity="center"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,6 +40,43 @@
                 android:layout_gravity="center"
                 />
             
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="40dp"
+            android:weightSum="3"
+            android:background="@drawable/background"
+            android:elevation="4dp">
+
+            <Spinner
+                android:id="@+id/idFromSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                android:padding="3dp"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/exchange"
+                android:layout_gravity="center"/>
+
+            <Spinner
+                android:id="@+id/idToSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                android:padding="3dp"
+                android:layout_gravity="center"/>
+
         </LinearLayout>
 
        <com.google.android.material.textfield.TextInputLayout
@@ -154,7 +156,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Say Something"
-            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textSize="30sp"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"/>
