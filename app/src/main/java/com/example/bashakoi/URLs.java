@@ -6,4 +6,5 @@ public class URLs {
     public static final String URL_AUTH =  ROOT_URL + "ApiConnect.php?" ;
     public static final String URL_R_EMAIL =  ROOT_URL + "Registration.php?";
     public static final String URL_CLIENT = ROOT_URL + "ClientInfo.php?";
+    public static final String URL_PROFILE =  ROOT_URL + "ProfileUpdate.php?" ;
 }

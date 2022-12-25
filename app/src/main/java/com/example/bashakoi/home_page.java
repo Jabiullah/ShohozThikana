@@ -21,11 +21,11 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class home_page extends AppCompatActivity {
-    Button btnClick, btnClientDetails;
-    EditText textEnter, clientCode;
+    Button btnClientDetails;
+    EditText clientCode;
     TextToSpeech textToSpeech;
     FloatingActionButton btn_profile;
-    TextView clientDetails;
+    TextView btnClick, clientDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class home_page extends AppCompatActivity {
 
         btn_profile = findViewById(R.id.fab);
         btnClick = findViewById(R.id.button2);
-        textEnter = findViewById(R.id.text1);
+//        textEnter = findViewById(R.id.text1);
 
         //Client Address generate by code no
         btnClientDetails = findViewById(R.id.goButton);
@@ -52,7 +52,7 @@ public class home_page extends AppCompatActivity {
         btnClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String s = textEnter.getText().toString();
+                String s = clientDetails.getText().toString();
                 int speech = textToSpeech.speak(s,textToSpeech.QUEUE_FLUSH,null);
 
             }
@@ -72,66 +72,74 @@ public class home_page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final String code = clientCode.getText().toString();
-                    class ShowClient extends AsyncTask<Void, Void, String> {
-                        @Override
-                        protected void onPreExecute() {
-                            super.onPreExecute();
-                        }
+                class ShowClient extends AsyncTask<Void, Void, String> {
+                    @Override
+                    protected void onPreExecute() {
+                        super.onPreExecute();
+                    }
 
-                        @Override
-                        protected void onPostExecute(String s) {
-                            super.onPostExecute(s);
-                            try {
-                                //converting response to json object
-                                JSONObject obj = new JSONObject(s);
+                    @Override
+                    protected void onPostExecute(String s) {
+                        super.onPostExecute(s);
+                        try {
+                            //converting response to json object
+                            JSONObject obj = new JSONObject(s);
 
-                                //if no error in response
-                                if (!obj.getBoolean("error")) {
+                            //if no error in response
+                            if (!obj.getBoolean("error")) {
 
-                                    final String user_message = obj.getString("message");
+                                final String user_message = obj.getString("message");
 
-                                    //getting the user from the response
-                                    JSONObject userJson = obj.getJSONObject("client");
+                                //getting the user from the response
+                                JSONObject userJson = obj.getJSONObject("client");
 
-                                    Toast.makeText(home_page.this,  code, Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(home_page.this,  code, Toast.LENGTH_SHORT).show();
 
-                                    //creating a new client object
-                                    Client client = new Client(
-                                            userJson.getInt("geocode_id"),
-                                            userJson.getInt("user_se"),
-                                            userJson.getInt("location_se"),
-                                            userJson.getString("geo_code")
-                                    );
+                                //creating a new client obje
+                                    int geocodeid = userJson.getInt("geocode_id");
+                                    int userse =  userJson.getInt("user_se");
+                                    int locationse =  userJson.getInt("location_se");
+                                      String geocode =  userJson.getString("geo_code");
 
-                                    SharedPrefManager.getInstance(getApplicationContext()).getClient(client);
+//                                    SharedPrefManager.getInstance(getApplicationContext()).getClient(client);
+                                if(user_message.contains("old")){
 
-                                    clientDetails.setText(code);
+                                    clientDetails.setText( "Geo Code Id " + String.valueOf(geocodeid) +"\n"
+                                                          + "" + "Geo Code " + geocode + "\n"
+                                                          + "" + "User Serial " + String.valueOf(userse) +"\n"
+                                                          + "" + "Location Serial " + String.valueOf(locationse));
 
-                                } else {
-                                    Toast.makeText(getApplicationContext(), code, Toast.LENGTH_SHORT).show();
-                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                }else {
+                                    Toast.makeText(getApplicationContext(), "স্বাগতম ", Toast.LENGTH_SHORT).show();
+                                }
+
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
                             }
-                        }
-
-                        @Override
-                        protected String doInBackground(Void... voids) {
-                            //creating request handler object
-                            RequestHandler requestHandler = new RequestHandler();
-
-                            //creating request parameters
-                            HashMap<String, String> params = new HashMap<>();
-                            params.put("geo_code", code);
-
-                            return requestHandler.sendPostRequest(URLs.URL_CLIENT, params);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
                     }
 
-                    ShowClient ul = new ShowClient();
-                    ul.execute();
+                    @Override
+                    protected String doInBackground(Void... voids) {
+                        //creating request handler object
+                        RequestHandler requestHandler = new RequestHandler();
+
+                        //creating request parameters
+                        HashMap<String, String> params = new HashMap<>();
+                        params.put("geo_code", code);
+
+                        return requestHandler.sendPostRequest(URLs.URL_CLIENT, params);
+                    }
+                }
+
+                ShowClient ul = new ShowClient();
+                ul.execute();
 
             }
         });
+
     }
 }
