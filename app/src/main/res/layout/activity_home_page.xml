@@ -45,9 +45,21 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         app:srcCompat="@drawable/profile"
+        app:fabSize="mini"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/GeoCodeSee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="85dp"
+        android:layout_marginRight="10dp"
+        app:srcCompat="@drawable/geoloc"
         app:fabSize="mini"
         />
 

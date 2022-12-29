@@ -36,4 +36,5 @@
     <string name="imageSkip">দরকার নেই এখন</string>
     <string name="voicePageBtn">রেকর্ড শুরু করুন</string>
     <string name="commonCase">একটি সহজ নাম দিন </string>
+    <string name="GeoLocationList">আপনার সকল সহজ ঠিকানা এখানে</string>
 </resources>

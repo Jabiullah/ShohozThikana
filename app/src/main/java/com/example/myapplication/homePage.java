@@ -22,7 +22,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class homePage extends FragmentActivity implements OnMapReadyCallback {
-    FloatingActionButton btn_profile;
+    FloatingActionButton btn_profile,btn_geoCodeDisplay;
     ImageButton add_information;
     GoogleMap gMap;
     FrameLayout map;
@@ -31,12 +31,22 @@ public class homePage extends FragmentActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        btn_profile     = findViewById(R.id.fab);
-        add_information = findViewById(R.id.info_add);
+        btn_profile         = findViewById(R.id.fab);
+        add_information     = findViewById(R.id.info_add);
+        btn_geoCodeDisplay  = findViewById(R.id.GeoCodeSee);
 
         map = findViewById(R.id.mapView);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
+
+        btn_geoCodeDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent geo_intent = new Intent(homePage.this, GeoList.class);
+                startActivity(geo_intent);
+                finish();
+            }
+        });
 
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +71,7 @@ public class homePage extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         this.gMap = googleMap;
-        LatLng mapDhaka = new LatLng(23.8103, 90.4125);
+        LatLng mapDhaka = gMap.getCameraPosition().target;
         this.gMap.addMarker(new MarkerOptions().position(mapDhaka).title("Dhaka"));
         this.gMap.moveCamera(CameraUpdateFactory.newLatLng(mapDhaka));
     }
