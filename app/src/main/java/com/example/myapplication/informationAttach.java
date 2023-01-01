@@ -76,6 +76,12 @@ public class informationAttach extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onBackPressed() {
+        Intent home_intent = new Intent(informationAttach.this, homePage.class);
+        startActivity(home_intent);
+        finish();
+    }
 
     private void dataStore() {
         final String location_name = name.getText().toString().trim();

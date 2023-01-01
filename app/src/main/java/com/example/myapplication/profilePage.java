@@ -126,6 +126,12 @@ public class profilePage extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onBackPressed() {
+        Intent home_intent = new Intent(profilePage.this, homePage.class);
+        startActivity(home_intent);
+        finish();
+    }
 
     private class PerformNetworkRequest extends AsyncTask<Void, Void, String> {
         String url;

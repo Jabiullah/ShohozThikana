@@ -40,6 +40,17 @@
     </RelativeLayout>
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/homeReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        app:srcCompat="@drawable/back"
+        app:fabSize="mini"
+        />
+
     <TextView
         android:id="@+id/geoListHeading"
         android:layout_width="wrap_content"

@@ -11,50 +11,83 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp">
-            <ImageView
-                android:id="@+id/imageOfHouse"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/addimage"
-                android:layout_centerHorizontal="true"
-                android:scaleType="centerCrop"/>
+            android:padding="8dp"
+            android:layout_marginBottom="10dp">
+
             <TextView
                 android:id="@+id/geoCodeValue"
-                android:layout_width="match_parent"
+                android:layout_width="240sp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@color/green"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/imageOfHouse"
+                android:layout_marginTop="1dp"
                 android:text="geoCodeValue" />
+
+
             <TextView
                 android:id="@+id/address"
-                android:layout_width="wrap_content"
+                android:layout_width="220sp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/geoCodeValue"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="Total address" />
             <TextView
-                android:id="@+id/voiceFile"
+                android:id="@+id/houseCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/address"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:text="voiceFile Path" />
+                android:text="House category" />
 
-            <TextView
-                android:id="@+id/viewNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/voiceFile"
+            <ImageView
+                android:id="@+id/Edit"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10sp"
+                android:layout_toRightOf="@+id/geoCodeValue"
+                android:src="@drawable/edit" />
+
+            <ImageView
+                android:id="@+id/Delete"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/Edit"
+                android:src="@drawable/cross" />
+            <ImageView
+                android:id="@+id/Audience"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:text="Number of people know your address." />
+                android:layout_marginRight="30sp"
+                android:layout_below="@+id/Delete"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/audience" />
+            <ImageView
+                android:id="@+id/Share"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="30sp"
+                android:layout_below="@+id/Audience"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/share" />
+            <TextView
+                android:id="@+id/voiceFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/houseCategory"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Play the audio Instructions" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_login"
         android:layout_marginLeft="25sp"
-        android:layout_marginTop="145sp"
+        android:layout_marginTop="165sp"
         android:layout_marginRight="25sp"
         android:text="@string/login5"
         android:textAlignment="center"
@@ -94,5 +94,4 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btn_login"
         android:layout_centerVertical="true" />
-
 </RelativeLayout>

@@ -50,12 +50,12 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                //start login Page 3 second delay
+                //start login Page 4 second delay
                 Intent login_intent = new Intent(MainActivity.this, loginPage.class);
                 startActivity(login_intent);
                 finish();
             }
-        },3000);
+        },4000);
 
     }
 }

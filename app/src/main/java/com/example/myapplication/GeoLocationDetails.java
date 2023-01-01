@@ -5,20 +5,21 @@ public class GeoLocationDetails {
     private String locationName;
     private String locationHouse;
     private String locationStreet;
-
-    public GeoLocationDetails(String geocode, String locationName,String locationHouse, String locationStreet) {
-        this.geocode        = geocode;
-        this.locationName   = locationName;
-        this.locationHouse  = locationHouse;
-        this.locationStreet = locationStreet;
-
+    private String locationCategory;
+    public GeoLocationDetails(String geocode, String locationName,String locationHouse, String locationStreet,String locationCategory) {
+        this.geocode            = geocode;
+        this.locationName       = locationName;
+        this.locationHouse      = locationHouse;
+        this.locationStreet     = locationStreet;
+        this.locationCategory   = locationCategory;
     }
     public String getGeocode() {
         return geocode;
     }
     public String getLocationName() {return locationName;}
     public String getLocationHouse() {
-        return locationStreet;
+        return locationHouse;
     }
     public String getLocationStreet() {return locationStreet;}
+    public String getLocationCategory() {return locationCategory;}
 }

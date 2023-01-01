@@ -27,6 +27,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class loginPage extends AppCompatActivity {
@@ -66,14 +68,35 @@ public class loginPage extends AppCompatActivity {
         btn_otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.isEmpty(phone.getText().toString())){
-                    Toast.makeText(loginPage.this, "Enter a valid Number", Toast.LENGTH_SHORT).show();
-                }
+
                 if(btn_otp_click==false){
+                    if(TextUtils.isEmpty(phone.getText().toString())){
+                        phone.setError("ফোন নম্বর ক্ষেত্র খালি");
+                        phone.setText("");
+                        phone.requestFocus();
+                        return;
+                    }
+                    if(phone.getText().toString().length()<=10){
+                        phone.setError("একটি বৈধ ফোন নম্বর ইনপুট করুন");
+                        phone.setText("");
+                        phone.requestFocus();
+                        return;
+                    }
+
+                    if(phone.getText().toString().length()>11){
+                        phone.setError("একটি বৈধ ফোন নম্বর ইনপুট করুন");
+                        phone.requestFocus();
+                        phone.setText("");
+                        return;
+                    }
+                    if(phone.getText().toString().contains("SELECT * FROM")){
+                        phone.setError("একটি বৈধ ফোন নম্বর ইনপুট করুন");
+                        phone.requestFocus();
+                        phone.setText("");
+                        return;
+                    }
                     number = phone.getText().toString();
-
                     sendverificationcode(number);
-
                     // how to put center android:layout_centerHorizontal="true"
                     header.setVisibility(View.GONE);
                     caption.setText("\n\n অনুগ্রহ করে ভেরিফিকেশন সম্পূর্ণ করুণ \n\n");
@@ -88,10 +111,17 @@ public class loginPage extends AppCompatActivity {
                     btn_otp.setText("ওটিপি চেক করুন");
                     btn_otp_click= true;
                 }else if(btn_otp_click==true){  //"verifyCode" function
-                    verifycode(phone.getText().toString());
-                    btn_otp_click= false;
+                    if(phone.getText().toString().length()>6 || phone.getText().toString().length()<6 ){
+                        phone.setError("অবৈধ OTP");
+                        phone.requestFocus();
+                        phone.setText("");
+                        return;
+                    }
+                    if(phone.getText().toString().length()==6) {
+                        verifycode(phone.getText().toString());
+                        btn_otp_click = false;
+                    }
                 }
-
             }
         });
 
@@ -105,7 +135,7 @@ public class loginPage extends AppCompatActivity {
                         .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
-    }
+            }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
@@ -118,7 +148,18 @@ public class loginPage extends AppCompatActivity {
 
         @Override
         public void onVerificationFailed(FirebaseException e) {
-            Toast.makeText(loginPage.this, "যাচাই ব্যর্থ", Toast.LENGTH_SHORT).show();
+            header.setVisibility(View.VISIBLE);
+            caption.setText("ফোন নম্বর ");
+            information.setText("");
+            information.setText("এখানে নতুন আপনি ?  \\nকোন সমস্যা নেই, আমাদের স্বয়ংক্রিয় ও সুরক্ষিত সিস্টেমে আপনি শুধু ফোন নাম্বার দিয়ে এক ট্যাপে লগইন করতে পারবেন");
+            information.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            bdPart.setVisibility(View.VISIBLE);
+            phone.setText("");
+            phone.setHint("ফোন নম্বর (01*********)");
+            btn_otp.setText("ওটিপি পাঠান");
+            btn_otp_click= false;
+
+            Toast.makeText(loginPage.this, "যাচাই ব্যর্থ, আপনার ফোন নম্বরে কিছু ত্রুটি আছে, অনুগ্রহ করে একটি নতুন ফোন নম্বর দিয়ে চেষ্টা করুন", Toast.LENGTH_SHORT).show();
         }
 
         @Override
