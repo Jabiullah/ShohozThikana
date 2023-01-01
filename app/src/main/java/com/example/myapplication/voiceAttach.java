@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -21,11 +22,16 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class voiceAttach extends AppCompatActivity {
     Button record,another_Record,btnImage;
+    String location_serial;
     FloatingActionButton addAnotherVoice;
     FloatingActionButton crossVoice;
 
@@ -39,7 +45,7 @@ public class voiceAttach extends AppCompatActivity {
 
     String location_name,location_house,location_street,category="";
 
-    String[] voiceFilePath = new String[2]; // Creating a new Array of Size 2
+    String[] voiceFilePath = new String[1]; // Creating a new Array of Size 2
     int increment = 0;
     SharedPrefManager sharedPrefManager = new SharedPrefManager();
     int userID  = sharedPrefManager.getUser().getId();
@@ -68,7 +74,6 @@ public class voiceAttach extends AppCompatActivity {
         another_Record      = findViewById(R.id.record_button_next);
         anotherInstruction  = findViewById(R.id.audio_ins_another);
 
-        addAnotherVoice     = findViewById(R.id.AddVoiceAnother);
         crossVoice          = findViewById(R.id.cross);
 
         btn_bck_info        = findViewById(R.id.back_info_attach);
@@ -94,36 +99,17 @@ public class voiceAttach extends AppCompatActivity {
         btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Bundle bundle_next   =  new Bundle();
-                bundle_next.putString("location_name",location_name);
-                bundle_next.putString("location_house",location_house);
-                bundle_next.putString("location_street",location_street);
-                bundle_next.putString("category",category);
-
-                bundle_next.putStringArray("voiceFilePath",voiceFilePath);
-
-                Intent intent_image = new Intent(voiceAttach.this, imageAddPage.class);
-                intent_image.putExtras(bundle_next);
-                startActivity(intent_image);
+                Bundle bundle_geo   =  new Bundle();
+                bundle_geo.putString("lastPartOfHouse",location_house);
+                bundle_geo.putString("locationPK",location_serial);
+                bundle_geo.putStringArray("voiceFilePath",voiceFilePath);
+                Intent intent_geo = new Intent(voiceAttach.this, GeoLocationCodeGenarate.class);
+                intent_geo.putExtras(bundle_geo);
+                startActivity(intent_geo);
                 // Toast.makeText(getApplicationContext(), Arrays.toString(voiceFilePath), Toast.LENGTH_SHORT).show();
             }
         });
 
-        addAnotherVoice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(TextUtils.isEmpty(instruction.getText())){
-                    instruction.setError("Please input 1st voice first");
-                    instruction.requestFocus();
-                }else{
-                    another_Record.setVisibility(View.VISIBLE);
-                    anotherInstruction.setVisibility(View.VISIBLE);
-                    addAnotherVoice.setVisibility(View.GONE);
-                    crossVoice.setVisibility(View.VISIBLE);
-                }
-            }
-        });
 
         crossVoice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +132,7 @@ public class voiceAttach extends AppCompatActivity {
                     return;
                 }else{
                     if(record.getText().toString().equals("রেকর্ড শুরু করুন")){
-                        record.setText("Continuing recording");
+                        record.setText("রেকর্ডিং চলছে");
                         try{
                             mediaRecorder = new MediaRecorder();
                             mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -155,70 +141,30 @@ public class voiceAttach extends AppCompatActivity {
                             mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                             mediaRecorder.prepare();
                             mediaRecorder.start();
+                            instruction.setEnabled(false);
 
                         }
                         catch (Exception e){
                             e.printStackTrace();
                         }
-                    }else if(record.getText().toString().equals("Continuing recording")){ //stopped record
-                        record.setText("Now check Audio");
+                    }else if(record.getText().toString().equals("রেকর্ডিং চলছে")){ //stopped record
+                        record.setText("এখন রেকর্ডিং হয়ে গেছে, এখন অডিও চেক করুন");
                         mediaRecorder.stop();
                         mediaRecorder.release();
                         mediaRecorder = null;
-                    }else if(record.getText().toString().equals("Now check Audio")){ // playing record
-                        record.setText("Playing the Audio");
+                    }else if(record.getText().toString().equals("এখন রেকর্ডিং হয়ে গেছে, এখন অডিও চেক করুন")){ // playing record
+                        record.setText("অডিও এখন চলছে");
                         try {
                             mediaPlayer = new MediaPlayer();
                             mediaPlayer.setDataSource(getRecordingFilePath());
                             mediaPlayer.prepare();
                             mediaPlayer.start();
                             voiceFilePath[increment]=getRecordingFilePath();
-                            increment++;
+                            btnImage.setVisibility(View.VISIBLE);
                         }
                         catch (Exception e){
                             e.printStackTrace();
                         }
-                    }
-                }
-
-            }
-        });
-
-        another_Record.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //started recording process
-                if(another_Record.getText().toString().equals("রেকর্ড শুরু করুন")){
-                    another_Record.setText("Continuing recording");
-                    try{
-                        mediaRecorder = new MediaRecorder();
-                        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-                        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-                        mediaRecorder.setOutputFile(getRecordingFilePath());
-                        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-                        mediaRecorder.prepare();
-                        mediaRecorder.start();
-                    }
-                    catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }else if(another_Record.getText().toString().equals("Continuing recording")){ //stopped record
-                    another_Record.setText("Now check Audio");
-
-                    mediaRecorder.stop();
-                    mediaRecorder.release();
-                    mediaRecorder = null;
-                }else if(another_Record.getText().toString().equals("Now check Audio")){ // playing record
-                    another_Record.setText("Playing the Audio");
-                    try {
-                        mediaPlayer = new MediaPlayer();
-                        mediaPlayer.setDataSource(getRecordingFilePath());
-                        mediaPlayer.prepare();
-                        voiceFilePath[increment]=getRecordingFilePath();
-                        mediaPlayer.start();
-                    }
-                    catch (Exception e){
-                        e.printStackTrace();
                     }
                 }
 
@@ -231,8 +177,65 @@ public class voiceAttach extends AppCompatActivity {
         }
 
 
-
+        dataStore();
     }//end of OnCreate
+
+    private void dataStore() {
+        User user                    = SharedPrefManager.getInstance(this).getUser();
+        class dataStore extends AsyncTask<Void, Void, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                try {
+                    //converting response to json object
+                    JSONObject obj = new JSONObject(s);
+
+                    //if no error in response
+                    if (!obj.getBoolean("error")) {
+
+                        final String user_message = obj.getString("message");
+                        location_serial = obj.getString("location_serial");
+
+                        //creating a new location object
+                        if (user_message.contains("Successful")) {
+                            //
+                            //display.setText("আপনার সহজ ঠিকানা হচ্ছে - ");
+
+                        }
+                        //error check
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Invalid information", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                //creating request handler object
+                RequestHandler requestHandler = new RequestHandler();
+
+                //creating request parameters
+                HashMap<String, String> params = new HashMap<>();
+                params.put("location_name", location_name);
+                params.put("location_house", location_house);
+                params.put("location_street", location_street);
+                params.put("location_category", category);
+                params.put("user_serial", String.valueOf(user.getId()));
+
+                return requestHandler.sendPostRequest(URLs.URL_LOCATION_INFO_INSERT, params);
+            }
+        }
+
+        dataStore ds = new dataStore();
+        ds.execute();
+    }
 
     //microPhone Permission
     private boolean isMicrophonePresent() {
@@ -256,4 +259,6 @@ public class voiceAttach extends AppCompatActivity {
         File file   = new File(musicDirectory,  String.valueOf(userID)+"-"+instruction.getText().toString().trim()+".mp3");
         return file.getPath();
     }
+
+
 }

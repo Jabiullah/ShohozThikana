@@ -59,6 +59,22 @@ public class RequestHandler {
         return sb.toString();
     }
 
+    public String sendGetRequest(String requestURL) {
+        StringBuilder sb = new StringBuilder();
+        try {
+            URL url = new URL(requestURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+            String s;
+            while ((s = bufferedReader.readLine()) != null) {
+                sb.append(s + "\n");
+            }
+        } catch (Exception e) {
+        }
+        return sb.toString();
+    }
+
 
     //this method is converting keyvalue pairs data into a query string as needed to send to the server
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {

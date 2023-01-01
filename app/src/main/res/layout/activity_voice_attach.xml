@@ -119,16 +119,6 @@
         android:layout_centerHorizontal="true"
         />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/AddVoiceAnother"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="360dp"
-        android:layout_marginRight="10dp"
-        app:srcCompat="@drawable/mic"
-        app:fabSize="mini"
-        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cross"
@@ -173,6 +163,7 @@
        android:layout_height="wrap_content"
        android:layout_below="@+id/record_button_next"
        android:text="শেষ ধাপে"
+       android:visibility="gone"
        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -73,6 +73,18 @@
         app:srcCompat="@drawable/share"
         app:fabSize="mini"
         />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/SearchGEOCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="215dp"
+        android:layout_marginRight="10dp"
+        app:srcCompat="@drawable/search"
+        app:fabSize="mini"
+        />
     <fragment
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

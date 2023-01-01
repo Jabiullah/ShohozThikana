@@ -31,7 +31,7 @@
     <string name="informationPageAudioHint">একটি গুরুত্বপূর্ণ জায়গা যেখানে দিক পরিবর্তন করতে হবে</string>
     <string name="geoInfo">আপনার জিও লোকেশন কোড তৈরির প্রথম ধাপ সম্পন্ন হচ্ছে।</string>
     <string name="geoInfoNext">আপনার জিও লোকেশন কোড তৈরির দ্বিতীয় ধাপ সম্পন্ন হচ্ছে।</string>
-    <string name="geoInfoLast">আপনার জিও লোকেশন কোড তৈরির সর্বশেষ ধাপ সম্পন্ন হচ্ছে।</string>
+    <string name="geoInfoLast">আপনার জিও লোকেশন কোড তৈরির সর্বশেষ ধাপ সম্পন্ন হয়েছে </string>
     <string name="imagePageHeading">আরো সহজে আপনার বাসা খুঁজে পেতে চাইলে,  ছবিও সংযুক্ত করতে পারেন </string>
     <string name="imageSkip">দরকার নেই এখন</string>
     <string name="voicePageBtn">রেকর্ড শুরু করুন</string>

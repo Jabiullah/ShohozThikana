@@ -27,7 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class homePage extends FragmentActivity implements OnMapReadyCallback {
-    FloatingActionButton btn_profile,btn_geoCodeDisplay,btn_SharedGEOCode;
+    FloatingActionButton btn_profile,btn_geoCodeDisplay,btn_SharedGEOCode, btn_Search;
     ImageButton add_information;
     GoogleMap gMap;
     FrameLayout map;
@@ -43,6 +43,7 @@ public class homePage extends FragmentActivity implements OnMapReadyCallback {
         add_information     = findViewById(R.id.info_add);
         btn_geoCodeDisplay  = findViewById(R.id.GeoCodeSee);
         btn_SharedGEOCode   = findViewById(R.id.SharedGeoCode);
+        btn_Search          = findViewById(R.id.SearchGEOCode);
 
         map = findViewById(R.id.mapView);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapView);
@@ -81,6 +82,14 @@ public class homePage extends FragmentActivity implements OnMapReadyCallback {
             public void onClick(View view) {
                 Intent sharedGEO_intent = new Intent(homePage.this, sharedGEOList.class);
                 startActivity(sharedGEO_intent);
+                finish();
+            }
+        });
+        btn_Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent geo_intent = new Intent(homePage.this, Search_Geo_Code.class);
+                startActivity(geo_intent);
                 finish();
             }
         });
