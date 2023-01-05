@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">বাসা কই</string>
+    <string name="app_name">সহজ ঠিকানা</string>
     <string name="login1">আপনার অ্যাকাউন্টে \nলগ ইন করুন</string>
     <string name="login2">ফোন নম্বর </string>
     <string name="login3">+88 </string>
@@ -12,24 +12,28 @@
     <string name="service_provider_name">Servicer Name</string>
     <string name="company_name">কোম্পানির নাম</string>
     <string name="company_id"> কোম্পানির আইডি নং.</string>
-    <string name="email">ইমেইল</string>
+    <string name="servicerName">সার্ভিসারের নাম</string>
+    <string name="email">ই-মেইল</string>
     <string name="recover_info">আপনার ফোন নাম্বার দিয়ে সর্বদা আপনি আমাদের সাথে যুক্ত থাকবেন। আপনার একাউন্টের নিরাপত্তাকে আরো একধাপ বৃদ্ধির জন্য এই ইমেইলটি প্রয়োজন।  পরবর্তীতে আপনি চাইলে ইমেইল আপডেট করতে পারবেন।</string>
     <string name="recover_btn">সম্পন্ন করুন</string>
-    <string name="header_name">বাসা</string>
-    <string name="header_name_next"> কই</string>
-    <string name="version">বাসা কই Version 1.0.1</string>
+    <string name="header_name">সহজ </string>
+    <string name="header_name_next"> ঠিকানা</string>
+    <string name="version">সহজ ঠিকানা Version 1.0.1</string>
     <string name="profile1">লগ আউট</string>
     <string name="profile2">রিকোভারি ইমেইল</string>
     <string name="profile3">আপনার ব্যক্তিগত তথ্য</string>
     <string name="profile4">লগ আউট</string>
     <string name="profile5">আপডেট করুন</string>
-    <string name="profile6">পরিবর্তন সম্পন্ন হয়েছে</string>
+    <string name="profile6">পরিবর্তন সম্পন্ন করুন</string>
     <string name="profile7">আপনি আপনার ফোন নাম্বার ব্যতিত বাকি সব ইনফরমেশন আপডেট করতে পারবেন</string>
     <string name="profileName">আপনার নাম</string>
     <string name="profileEmail">আপনার ই-মেইল</string>
     <string name="profileComName">আপনার কোম্পানির নাম</string>
     <string name="profileComId">আপনার কোম্পানির আইডি নং.</string>
 
-    <string name="codeNo">অনুগ্রহ করে কোডটি প্রবেশ করুন</string>
+    <string name="codeNo">অনুগ্রহ করে আপনার ক্লায়েন্টের কোডটি প্রবেশ করুন</string>
+    <string name="knowCode">ক্লায়েন্টের বিস্তারিত  ঠিকানা</string>
+    <string name="codeNoField">কোড নং</string>
+    <string name="voiceText">ক্লায়েন্টের ঠিকানা ভয়েসে শুনতে বাটনটি ক্লিক  করুন</string>
 
 </resources>

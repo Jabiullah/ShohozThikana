@@ -59,8 +59,9 @@ public class SharedPrefManager {
                 sharedPreferences.getString(KEY_PHONE, null),
                 sharedPreferences.getString(KEY_NAME, null),
                 sharedPreferences.getString(KEY_EMAIL, null),
-                sharedPreferences.getString(COM_NAME, null),
-                sharedPreferences.getString(COM_ID, null));
+                sharedPreferences.getString(COM_ID, null),
+                sharedPreferences.getString(COM_NAME, null));
+
     }
 
     //this method will logout the user

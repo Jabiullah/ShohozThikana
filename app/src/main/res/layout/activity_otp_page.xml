@@ -12,6 +12,4 @@
         android:text="Home page for Service provider"
         android:gravity="center">
     </TextView>
-
-
 </RelativeLayout>

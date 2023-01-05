@@ -13,7 +13,7 @@
         android:background="@drawable/shapebar">
 
         <RelativeLayout
-            android:layout_width="100dp"
+            android:layout_width="140dp"
             android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:layout_marginTop="5sp">
@@ -67,7 +67,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10sp"
         android:layout_below="@+id/info_head"
-        android:src="@drawable/profile" />
+        android:src="@drawable/user" />
 
     <EditText
         android:id="@+id/name"
@@ -109,7 +109,7 @@
         android:textColor="@color/green"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:visibility="gone" />
+        android:visibility="invisible" />
 
     <EditText
         android:id="@+id/email"
@@ -130,6 +130,7 @@
 
     <EditText
         android:id="@+id/phone"
+        android:hint="@string/login2"
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -21,11 +21,10 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class home_page extends AppCompatActivity {
-    Button btnClientDetails;
     EditText clientCode;
     TextToSpeech textToSpeech;
     FloatingActionButton btn_profile;
-    TextView btnClick, clientDetails;
+    TextView btnClick, btnClientDetails, clientDetails, voiceText, TxLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,9 @@ public class home_page extends AppCompatActivity {
         btnClientDetails = findViewById(R.id.goButton);
         clientCode = findViewById(R.id.codeNo);
         clientDetails = findViewById(R.id.showText);
+        TxLogout = findViewById(R.id.logout);
+        voiceText = findViewById(R.id.voiceText);
+
 
         textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -95,19 +97,22 @@ public class home_page extends AppCompatActivity {
 
                                // Toast.makeText(home_page.this,  code, Toast.LENGTH_SHORT).show();
 
-                                //creating a new client obje
-                                    int geocodeid = userJson.getInt("geocode_id");
-                                    int userse =  userJson.getInt("user_se");
-                                    int locationse =  userJson.getInt("location_se");
-                                      String geocode =  userJson.getString("geo_code");
+                                //creating a new client obj
+                                    String locationName =  userJson.getString("location_name");
+                                    String location_house = userJson.getString("location_house");
+                                    String location_street = userJson.getString("location_street");
+                                    String location_category = userJson.getString("location_category");
+                                    String geocode =  userJson.getString("geo_code");
 
 //                                    SharedPrefManager.getInstance(getApplicationContext()).getClient(client);
                                 if(user_message.contains("old")){
 
-                                    clientDetails.setText( "Geo Code Id " + String.valueOf(geocodeid) +"\n"
-                                                          + "" + "Geo Code " + geocode + "\n"
-                                                          + "" + "User Serial " + String.valueOf(userse) +"\n"
-                                                          + "" + "Location Serial " + String.valueOf(locationse));
+                                    clientDetails.setText( "User Code " +geocode +"\n"+"\n"
+                                                           + location_house + "\n"
+                                                           + " Location " + locationName + "," + location_street);
+
+                                    voiceText.setVisibility(View.VISIBLE);
+                                    btnClick.setVisibility(View.VISIBLE);
 
                                 }else {
                                     Toast.makeText(getApplicationContext(), "স্বাগতম ", Toast.LENGTH_SHORT).show();
@@ -138,6 +143,14 @@ public class home_page extends AppCompatActivity {
                 ShowClient ul = new ShowClient();
                 ul.execute();
 
+            }
+        });
+
+        TxLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                SharedPrefManager.getInstance(getApplicationContext()).logout();
             }
         });
 

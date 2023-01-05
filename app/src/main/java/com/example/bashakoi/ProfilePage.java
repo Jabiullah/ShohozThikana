@@ -73,7 +73,6 @@ public class ProfilePage extends AppCompatActivity {
         Update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TxLogout.setVisibility(View.GONE);
                 updateText.setVisibility(View.VISIBLE);
 //  Enabled Edittext bt clicking the update button
                 EdName.setInputType(InputType.TYPE_CLASS_TEXT );
@@ -81,17 +80,18 @@ public class ProfilePage extends AppCompatActivity {
                 EdCompanyName.setInputType(InputType.TYPE_CLASS_TEXT);
                 EdCompanyId.setInputType(InputType.TYPE_CLASS_TEXT);
                 update_done.setVisibility(View.VISIBLE);
+                Update.setVisibility(View.GONE);
+
 
             }
         });
         update_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Update.setVisibility(View.GONE);
                 String name  = EdName.getText().toString();
                 String email = EdEmail.getText().toString().trim();
-                String comId = EdCompanyId.getText().toString();
                 String comName = EdCompanyName.getText().toString();
+                String comId = EdCompanyId.getText().toString();
                 if (TextUtils.isEmpty(name)) {
                     EdName.setInputType(InputType.TYPE_CLASS_TEXT);
                     EdName.setError("Please enter Name");
@@ -104,25 +104,27 @@ public class ProfilePage extends AppCompatActivity {
                     EdEmail.requestFocus();
                     return;
                 }
-                if (TextUtils.isEmpty(comId)) {
-                    EdCompanyName.setInputType(InputType.TYPE_CLASS_TEXT);
-                    EdCompanyId.setError("Please enter companyId");
-                    EdCompanyId.requestFocus();
-                    return;
-                }
                 if (TextUtils.isEmpty(comName)) {
-                    EdCompanyId.setInputType(InputType.TYPE_CLASS_TEXT);
+                    EdCompanyName.setInputType(InputType.TYPE_CLASS_TEXT);
                     EdCompanyName.setError("Please enter company Name");
                     EdCompanyName.requestFocus();
                     return;
                 }
+                if (TextUtils.isEmpty(comId)) {
+                    EdCompanyId.setInputType(InputType.TYPE_CLASS_TEXT);
+                    EdCompanyId.setError("Please enter companyId");
+                    EdCompanyId.requestFocus();
+                    return;
+                }
+
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("servicer_id",String.valueOf(user.getId()));
                 params.put("servicer_name", name);
                 params.put("servicer_email", email);
-                params.put("company_name", comId);
-                params.put("company_id", comName);
+                params.put("company_name", comName);
+                params.put("company_id", comId);
+
 
                 PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_PROFILE, params, CODE_POST_REQUEST);
                 request.execute();
@@ -145,9 +147,10 @@ public class ProfilePage extends AppCompatActivity {
                 EdEmail.setText(String.valueOf((user.getEmail())));
                 EdCompanyName.setText(String.valueOf(user.getCompany()));
                 EdCompanyId.setText(String.valueOf(user.getCompanyId()));
+                update_done.setVisibility(View.GONE);
 
-                updateText.setText(" Information Updated");
-                TxLogout.setVisibility(View.VISIBLE);
+
+                Toast.makeText(ProfilePage.this, "পরিবর্তন সম্পন্ন হয়েছে", Toast.LENGTH_SHORT).show();
 
             }
         });
