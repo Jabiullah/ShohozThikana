@@ -16,6 +16,7 @@ Button showBtn;
         setContentView(R.layout.activity_main);
 
         showBtn =  findViewById(R.id.btn);
+
         showBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
